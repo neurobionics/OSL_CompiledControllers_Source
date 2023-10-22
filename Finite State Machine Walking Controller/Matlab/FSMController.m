@@ -1,5 +1,7 @@
 function [outputs] = FSMController(inputs)
-% TODO: Jace to add comment summarizing the function
+% Inputs: FSMParameters (body weight, current impedance parameters, transition paramters), sensors (knee angle,
+% knee velocity, ankle angle, ankle velocity, fz) 
+% Outputs: 
 % TODO: Jace to add his contact info here and attribution info
 
 % Unpack things for convenience 
