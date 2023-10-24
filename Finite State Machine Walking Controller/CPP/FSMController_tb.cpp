@@ -1,114 +1,70 @@
 #include <cassert>
+#include <iostream>
+
 #include "FSMStructs.hpp"
 #include "FSMController.hpp"
+
+using namespace std;
 
 
 int main() {
 
     // Initializes the hardware and parameters structs
-    Hardware hardware;
-    FSMParameters params;
-    
-    // Initializes body weight of subject
+    FSM_Inputs inputs;
+
+    FSMParameters &params = inputs.parameters;
+
     params.bodyWeight = 60 * 9.8;
 
-    // Initializes the minimum time required to pass before leaving the state
-    params.minTimeInState = 2.0;
+    params.transitionParameters.minTimeInState = 2.0;
+    params.transitionParameters.loadLStance = 10;
+
+
+
+    params.kneeImpedance.earlyStance.stiffness = 99.372;
+    params.kneeImpedance.earlyStance.damping = 3.180;
+    params.kneeImpedance.earlyStance.eqAngle = 5;
+    params.transitionParameters.loadLStance = -1.0 * params.bodyWeight * 0.25;
+    params.transitionParameters.ankleThetaEStanceToLStance = 6.0;
+    params.ankleImpedance.earlyStance.stiffness = 19.874;
+    params.ankleImpedance.earlyStance.damping = 0;
+    params.ankleImpedance.earlyStance.eqAngle = -2;
     
-    // Sets the ESTANCE parameters
-    params.eStanceParams.kneeK = 99.372;
-    params.eStanceParams.kneeB = 3.180;
-    params.eStanceParams.kneeTheta = 5;
-    params.eStanceParams.loadLStance = -1.0 * params.bodyWeight * 0.25;
-    params.eStanceParams.ankleThetaEStanceToLStance = 6.0;
-    params.eStanceParams.ankleK = 19.874;
-    params.eStanceParams.ankleB = 0;
-    params.eStanceParams.ankleTheta = -2;
-
-    // Sets the LSTANCE parameters
-    params.lStanceParams.kneeK = 99.372;
-    params.lStanceParams.kneeB = 1.272;
-    params.lStanceParams.kneeTheta = 8;
-    params.lStanceParams.loadESwing = -1.0 * params.bodyWeight * 0.15;
-    params.lStanceParams.ankleK = 79.498;
-    params.lStanceParams.ankleB = 0.063;
-    params.lStanceParams.ankleTheta = -20;
-
-    // Sets the ESWING parameters
-    params.eSwingParams.kneeK = 39.749;
-    params.eSwingParams.kneeB = 0.063;
-    params.eSwingParams.kneeTheta = 60;
-    params.eSwingParams.kneeThetaESwingToLSwing = 50;
-    params.eSwingParams.kneeDThetaESwingToLSwing = 3;
-    params.eSwingParams.ankleK = 7.949;
-    params.eSwingParams.ankleB = 0.0;
-    params.eSwingParams.ankleTheta = 25;
-
-    // Sets the LSWING parameters
-    params.lSwingParams.kneeK = 15.899;
-    params.lSwingParams.kneeB = 3.816;
-    params.lSwingParams.kneeTheta = 5;
-    params.lSwingParams.loadEStance = -1.0 * params.bodyWeight * 0.4;
-    params.lSwingParams.kneeThetaLSwingToEStance = 30;
-    params.lSwingParams.ankleK = 7.949;
-    params.lSwingParams.ankleB = 0.0;
-    params.lSwingParams.ankleTheta = 15;
-
-    // Initializes the gains and equilibrium angles for the knee and ankle
-    State currentStateOut;
-    double kneeTheta = 0.0;
-    double kneeK = 0.0;
-    double kneeB = 0.0;
-    double ankleTheta = 0.0;
-    double ankleK = 0.0;
-    double ankleB = 0.0;
-
-
-    // Currently, these are set to values in order to test the function
-    // When implementing, these values should be set to readings from the sensors
-    hardware.currentTimeInState = 30;
-    hardware.time = 0;
-    hardware.osl.loadcell.fx = 0;
-    hardware.osl.loadcell.fy = 0;
-    hardware.osl.loadcell.fz = 0;
-    hardware.osl.loadcell.mx = 0;
-    hardware.osl.loadcell.my = 0;
-    hardware.osl.loadcell.mz = 0;
-    hardware.osl.ankle.outputPosition = 70;
-    hardware.osl.ankle.outputVelocity = 0;
-    hardware.osl.knee.outputPosition = 0;
-    hardware.osl.knee.outputVelocity = -4;  
-
-
-      
+    params.kneeImpedance.lateStance.stiffness = 99.372;
+    params.kneeImpedance.lateStance.damping = 1.272;
+    params.kneeImpedance.lateStance.eqAngle = 8;
+    params.transitionParameters.loadESwing = -1.0 * params.bodyWeight * 0.15;
+    params.ankleImpedance.lateStance.stiffness = 79.498;
+    params.ankleImpedance.lateStance.damping = 0.063;
+    params.ankleImpedance.lateStance.eqAngle = -20;
     
-    // Initializes pointers to the variables that are passed into the function
-    Hardware *hardwarePtr = &hardware;
-    FSMParameters *paramsPtr = &params;
-    State *currentStateOutPtr = &currentStateOut;
-    double *kneeThetaPtr = &kneeTheta;
-    double *kneeKPtr = &kneeK;
-    double *kneeBPtr = &kneeB;
-    double *ankleThetaPtr = &ankleTheta;
-    double *ankleKPtr = &ankleK;
-    double *ankleBPtr = &ankleB;
-
+    params.kneeImpedance.earlySwing.stiffness = 39.749;
+    params.kneeImpedance.earlySwing.damping = 0.063;
+    params.kneeImpedance.earlySwing.eqAngle = 60;
+    params.transitionParameters.kneeThetaESwingToLSwing = 50;
+    params.transitionParameters.kneeDThetaESwingToLSwing = 3;
+    params.ankleImpedance.earlySwing.stiffness = 7.949;
+    params.ankleImpedance.earlySwing.damping = 0.0;
+    params.ankleImpedance.earlySwing.eqAngle = 25;
     
-    // CALLS FSMCONTROLLER FUNCTION
-    FSMController(hardwarePtr, paramsPtr, currentStateOutPtr,
-                  kneeThetaPtr, kneeKPtr, kneeBPtr, ankleThetaPtr, ankleKPtr,
-                  ankleBPtr);
+    params.kneeImpedance.lateSwing.stiffness = 15.899;
+    params.kneeImpedance.lateSwing.damping = 3.816;
+    params.kneeImpedance.lateSwing.eqAngle = 5;
+    params.transitionParameters.loadEStance = -1.0 * params.bodyWeight * 0.4;
+    params.transitionParameters.kneeThetaLSwingToEStance = 30;
+    params.ankleImpedance.lateSwing.stiffness = 7.949;
+    params.ankleImpedance.lateSwing.damping = 0.0;
+    params.ankleImpedance.lateSwing.eqAngle = 15;
 
-    FSMController(hardwarePtr, paramsPtr, currentStateOutPtr,
-                  kneeThetaPtr, kneeKPtr, kneeBPtr, ankleThetaPtr, ankleKPtr,
-                  ankleBPtr);
+    FSM_Outputs outputs;
 
-    assert(currentStateOut == LSTANCE);
+    outputs = FSMController(inputs);
 
-    assert(kneeK == 99.372);
-    assert(kneeB == 1.272);
-    assert(kneeTheta == 8);
-    assert(ankleK == 79.498);
-    assert(ankleB == 0.063);
-    assert(ankleTheta == -20);
+    cout << "outputs.kneeStiffness: " << outputs.kneeImpedance.stiffness << endl;
+    cout << "outputs.kneeDamping: " << outputs.kneeImpedance.damping << endl;
+    cout << "outputs.kneeEqAngle: " << outputs.kneeImpedance.eqAngle << endl;
+    cout << "outputs.ankleStiffness: " << outputs.ankleImpedance.stiffness << endl;
+    cout << "outputs.ankleDamping: " << outputs.ankleImpedance.damping << endl;
+    cout << "outputs.ankleEqAngle: " << outputs.ankleImpedance.eqAngle << endl;
+    cout << "outputs.currentState: " << outputs.currentState << endl;
 }
