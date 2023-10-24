@@ -75,8 +75,8 @@ FSM_Outputs FSMController(FSM_Inputs inputs) {
     } else if (currentState == LSWING) {
 
         // Conditions to transition to ESTANCE
-        if ((sensors.Fz < params.transitionParameters.loadEStance) &&
-            (sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance) &&
+        if (((sensors.Fz < params.transitionParameters.loadEStance) ||
+            (sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance)) &&
             (currentTimeInState > params.transitionParameters.minTimeInState)) {
                 // Update to ESTANCE
                 currentState = ESTANCE;
