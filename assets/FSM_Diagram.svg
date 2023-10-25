@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="4in"
+   height="3in"
+   viewBox="0 0 101.6 76.2"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="FSM_Diagram.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.587745"
+     inkscape:cx="237.46544"
+     inkscape:cy="173.89658"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4288"
+       transform="translate(-0.80789682,-0.2556119)">
+      <rect
+         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect184"
+         width="32.411587"
+         height="22.187111"
+         x="8.9975376"
+         y="5.112237"
+         ry="2.6583636" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="81.462074"
+         y="18.199566"
+         id="text3289"><tspan
+           x="15.344087"
+           y="12.891735"
+           id="tspan5184"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5182">Early </tspan></tspan><tspan
+           x="12.220289"
+           y="23.531079"
+           id="tspan5188"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5186">Stance</tspan></tspan></text>
+    </g>
+    <g
+       id="g4296"
+       transform="translate(1.1347537)">
+      <rect
+         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect184-2"
+         width="32.411587"
+         height="22.187111"
+         x="61.909195"
+         y="4.8566251"
+         ry="2.6583636" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="81.462074"
+         y="18.199566"
+         id="text3289-9"><tspan
+           x="69.784162"
+           y="12.637829"
+           id="tspan5192"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5190">Late </tspan></tspan><tspan
+           x="65.131682"
+           y="23.277173"
+           id="tspan5196"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5194">Stance</tspan></tspan></text>
+    </g>
+    <g
+       id="g4283"
+       transform="translate(53.484065,8.6055688)">
+      <rect
+         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect184-2-0"
+         width="32.411587"
+         height="22.187111"
+         x="9.5598831"
+         y="35.939026"
+         ry="2.6583636" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2-0);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="81.462074"
+         y="18.199566"
+         id="text3289-9-8"><tspan
+           x="15.905757"
+           y="43.71986"
+           id="tspan5200"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5198">Early </tspan></tspan><tspan
+           x="12.782432"
+           y="54.359203"
+           id="tspan5204"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5202">Stance</tspan></tspan></text>
+    </g>
+    <g
+       id="g4275"
+       transform="translate(-52.492614,7.8898553)">
+      <rect
+         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect184-2-3"
+         width="32.411587"
+         height="22.187111"
+         x="60.682255"
+         y="36.654739"
+         ry="2.6583636" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2-3);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="81.462074"
+         y="18.199566"
+         id="text3289-9-9"><tspan
+           x="68.557451"
+           y="44.434704"
+           id="tspan5208"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5206">Late </tspan></tspan><tspan
+           x="65.2977"
+           y="55.074047"
+           id="tspan5212"><tspan
+             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+             id="tspan5210">Swing</tspan></tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 40.795654,15.438957 18.09732,0"
+       id="path4352"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 79.648658,27.401591 0,12.985083"
+       id="path4621"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 62.778274,55.416653 -18.30181,0"
+       id="path4623"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 25.254453,44.067486 0,-12.985083"
+       id="path4625"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
