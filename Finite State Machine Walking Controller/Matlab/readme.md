@@ -4,9 +4,9 @@ This section of the repository contains the source code for the MATLAB implement
 ## Prerequisites
 - MATLAB (any somewhat recent version will do)
 - [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)[^1]
-- [MATLAB Raspberry Pi Hardware Support Package](https://www.mathworks.com/hardware-support/raspberry-pi-matlab.html)
+- [MATLAB Raspberry Pi Hardware Support Package](https://www.mathworks.com/hardware-support/raspberry-pi-matlab.html)[^1]
 
-[^1]: (Note: This can be installed using the `Add-On Explorer` in MATLAB.)
+> **_NOTE_**: MATLAB Coder and the Hardware Support Package can be installed using the `Add-On Explorer` in MATLAB.
 
 ## Source Files
 The source files consist of a main function `FSMController.m`, a setup script `FSMController_setup.m`, and a `Type Definitions` directory. The main function `FSMController.m` is what our OSL code will call each time through the control loop to execute the state machine logic and calculate knee and ankle impedance values. The setup script is used to configure the search path and to define the function's input and output variables for code generation (see below). 
@@ -164,4 +164,16 @@ outputs = FSMController(inputs);
 
 And that is all of the source files. Now we'll move on to using MATLAB Coder and generating the shared object library. 
 ## Code Generation and Compilation
-We will use [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html) to convert the function `FSMController.m` into `C` and then compile it into a shared object library for the raspberry pi.
+We will use [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html) to convert the function `FSMController.m` into `C` and then compile it into a shared object library for the Raspberry Pi. After ensuring all [prerequisites are installed](#prerequisites), perform the following steps in MATLAB with the working directory set to ``...\OSL_CompiledControllers_Source\Finite State Machine Walking Controller\Matlab``. 
+
+1. Type `coder` into the command window and press enter. 
+2. Enter `FSMController` for the function name to install and press enter. Your screen should look like this:![Screenshot of MATLAB Coder](./assets/coder_step2.png)
+3. In the next page, type `FSMController_setup` into the field and press `Autodefine Input Types`. MATLAB will then call this script to figure out the structure of the functions inputs and outputs. If successful, your screen will look like this the following. Then click next.
+![Screenshot of MATLAB Coder](./assets/coder_step3.png)
+4. The next page is the `Check for Issues` page. You can click the `Check for Issues` button to ensure no odd behavior in the generated code. 
+![Screenshot of MATLAB Coder](./assets/coder_step4.png)
+5. The next page is the code generation page. Set the Build type to be a `Dynamic Library` and select `Raspberry Pi` as the Hardware Board. 
+![Screenshot of MATLAB Coder](./assets/coder_step5.png)
+6. Click on `More Settings` and navigate to the `Hardware` tab. Enter the IP address and credentials for your Raspberry Pi. Note that in order to compile the shared object, your PC and Pi must both be on the same network. Click `Close` and then click `Generate`.
+![Screenshot of MATLAB Coder](./assets/coder_step6.png)
+7. You should get a message that code generation was successful. You can now copy the generated library `FSMController.so` to wherever you want to use it. You'll find it in the specified `Build Directory` (configured right below the login credentials) on the Pi. 
