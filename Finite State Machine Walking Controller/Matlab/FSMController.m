@@ -1,5 +1,18 @@
 function [outputs] = FSMController(inputs)
-% TODO: Jace to add comment summarizing the function
+% Inputs: FSMParameters (body weight, current impedance parameters, transition parameters), sensors (knee angle,
+%         knee velocity, ankle angle, ankle velocity, fz), time
+% 
+% Persistent variable: current state
+% 
+% Based on the current state, readings from sensors, and if certain thresholds are met, the current state will
+% either remain as the current state, or will change to the next state. Then, based on the current state, the
+% new impedance parameters will be selected. Then the current state, the impedance parameters, and the time
+% in the current state will be outputted. 
+%
+% Outputs: current state, time in current state, knee impedance parameters, ankle impedance parameters
+%
+% 
+
 % TODO: Jace to add his contact info here and attribution info
 
 % Unpack things for convenience 
@@ -19,7 +32,7 @@ time_last = inputs.time;
 
 % Finite State Machine
 if currentState == eStates.eStance
-    if(sensors.Fz > params.transitionParameters.loadLStance ...
+    if(sensors.Fz < params.transitionParameters.loadLStance ...
             && sensors.ankleAngle > ...
             params.transitionParameters.ankleThetaEStanceToLStance ...
             && currentTimeInState > params.transitionParameters.minTimeInState)
@@ -56,8 +69,9 @@ elseif currentState == eStates.eSwing
 
 elseif currentState == eStates.lSwing
 
-    if (sensors.Fz < params.transitionParameters.loadEStance ...
-            || sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance)
+    if ((sensors.Fz < params.transitionParameters.loadEStance ...
+            || sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance) ...
+            && currentTimeInState > params.transitionParameters.minTimeInState)
         currentState = eStates.eStance;
         currentTimeInState = 0.0;
     else
