@@ -1,5 +1,12 @@
 # Finite State Machine Controller - MATLAB Implementation
-This section of the repository contains the source code for the MATLAB implementation of the Finite State Machine Walking Controller. 
+This section of the repository contains the source code for the MATLAB implementation of the Finite State Machine Walking Controller. The first subsection details the source files and how we implemented the finite state machine logic in MATLAB. If you're comfortable with writing object-oriented MATLAB code, you can skip down to the [Code Generation and Compilation Section](#code-generation-and-compilation).
+
+## Prerequisites
+- MATLAB (any somewhat recent version will do)
+- [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)[^1]
+- [MATLAB Raspberry Pi Hardware Support Package](https://www.mathworks.com/hardware-support/raspberry-pi-matlab.html)
+
+[^1]: (Note: This can be installed using the `Add-On Explorer` in MATLAB.)
 
 ## Source Files
 The source files consist of a main function `FSMController.m`, a setup script `FSMController_setup.m`, and a `Type Definitions` directory. The main function `FSMController.m` is what our OSL code will call each time through the control loop to execute the state machine logic and calculate knee and ankle impedance values. The setup script is used to configure the search path and to define the function's input and output variables for code generation (see below). 
@@ -40,6 +47,121 @@ Finally, we define the output type `FSM_Outputs` to contain the active impedance
 https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/97973ee80d8a63ef02bea106b8a8064f2c2b013e/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/FSM_Outputs.m#L1-L16
 
 ### Main Function
+The main function `[outputs] = FSMController(inputs)` takes inputs of the `FSM_Inputs.m` type and returns a structure of the `FSM_Outputs.m` type. In the first few lines of the file, we unpack things from the inputs structure for convenience and we declare persistent variables. Persistent variables are used in MATLAB to retian data from one function call to the next, similar to `static` in `C` (see [Mathworks Help Center](https://www.mathworks.com/help/matlab/ref/persistent.html)). We want to keep track of which state we're in, as well as how long we've been there, so we declare these inputs:
+```matlab
+% Unpack things for convenience 
+sensors = inputs.sensors;
+params = inputs.parameters;
 
+persistent currentState currentTimeInState time_last
+if isempty(currentState)
+    currentState = eStates.eStance;
+    currentTimeInState = 0;
+    time_last = inputs.time;
+end
+```
 
+Next we have our main state machine logic. Each branch of the `if` statement checks the transition parameters to exit each state. 
+```matlab
+% Finite State Machine
+if currentState == eStates.eStance
+    if(sensors.Fz < params.transitionParameters.loadLStance ...
+            && sensors.ankleAngle > ...
+            params.transitionParameters.ankleThetaEStanceToLStance ...
+            && currentTimeInState > params.transitionParameters.minTimeInState)
+        currentState = eStates.lStance;
+        currentTimeInState = 0.0;
+    else
+        currentState = eStates.eStance;
+        currentTimeInState = currentTimeInState + dt;
+    end
+
+elseif currentState == eStates.lStance
+    if(sensors.Fz > params.transitionParameters.loadESwing && ...
+            currentTimeInState > params.transitionParameters.minTimeInState)
+        currentState = eStates.eSwing;
+        currentTimeInState = 0.0;
+    else
+        currentState = eStates.lStance;
+        currentTimeInState = currentTimeInState + dt;
+    end
+
+elseif currentState == eStates.eSwing
+    if (sensors.kneeAngle > params.transitionParameters.kneeThetaESwingToLSwing ...
+            && sensors.kneeVelocity < params.transitionParameters.kneeDThetaESwingToLSwing ...
+            && currentTimeInState > params.transitionParameters.minTimeInState)
+
+        currentState = eStates.lSwing;
+        currentTimeInState = 0.0;
+
+    else
+        currentState = eStates.eSwing;
+        currentTimeInState = currentTimeInState + dt;
+
+    end
+
+elseif currentState == eStates.lSwing
+
+    if ((sensors.Fz < params.transitionParameters.loadEStance ...
+            || sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance) ...
+            && currentTimeInState > params.transitionParameters.minTimeInState)
+        currentState = eStates.eStance;
+        currentTimeInState = 0.0;
+    else
+        currentState = eStates.lSwing;
+        currentTimeInState = currentTimeInState + dt;
+
+    end
+
+else
+    currentState = eStates.eStance;
+    currentTimeInState = currentTimeInState + dt;
+end
+```
+
+Finally, we choose between sets of impedance parameters based on the current states and write to the outputs structure. 
+
+```matlab
+% Select impedance parameters based on the current state
+switch currentState
+    case eStates.eStance
+        kneeImpedance = params.kneeImpedance.earlyStance;
+        ankleImpedance = params.ankleImpedance.earlyStance;
+    case eStates.lStance
+        kneeImpedance = params.kneeImpedance.lateStance;
+        ankleImpedance = params.ankleImpedance.lateStance;
+    case eStates.eSwing
+        kneeImpedance = params.kneeImpedance.earlySwing;
+        ankleImpedance = params.ankleImpedance.earlySwing;
+    case eStates.lSwing
+        kneeImpedance = params.kneeImpedance.lateSwing;
+        ankleImpedance = params.ankleImpedance.lateSwing;
+    otherwise
+        kneeImpedance = params.kneeImpedance.earlyStance;
+        ankleImpedance = params.ankleImpedance.earlyStance;
+end
+
+% Write to output structures
+
+outputs = FSM_Outputs();
+outputs.currentState = currentState;
+outputs.timeInCurrentState = currentTimeInState;
+outputs.kneeImpedance = kneeImpedance;
+outputs.ankleImpedance = ankleImpedance;
+```
+
+### Setup Script
+The purpose of the setup script is to configure the MATLAB path and to make a test call to the main function. In this case, our setup file is quite simple. We reset the workspace, add the `Type Defintions` directory to the path, and call the main function once. 
+```matlab
+clear all
+close all
+
+addpath("Type Definitions")
+inputs = FSM_Inputs();
+
+outputs = FSMController(inputs);
+```
+
+And that is all of the source files. Now we'll move on to using MATLAB Coder and generating the shared object library. 
 ## Code Generation and Compilation
+We will use [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html) to convert the function `FSMController.m` into `C` and then compile it into a shared object library for the raspberry pi.
