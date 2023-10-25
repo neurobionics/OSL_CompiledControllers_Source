@@ -166,6 +166,7 @@ And that is all of the source files. Now we'll move on to using MATLAB Coder and
 ## Code Generation and Compilation
 We will use [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html) to convert the function `FSMController.m` into `C` and then compile it into a shared object library for the Raspberry Pi. After ensuring all [prerequisites are installed](#prerequisites), perform the following steps in MATLAB with the working directory set to ``...\OSL_CompiledControllers_Source\Finite State Machine Walking Controller\Matlab``. 
 
+### Using MATLAB Coder
 1. Type `coder` into the command window and press enter. 
 2. Enter `FSMController` for the function name to install and press enter. Your screen should look like this:![Screenshot of MATLAB Coder](./assets/coder_step2.png)
 3. In the next page, type `FSMController_setup` into the field and press `Autodefine Input Types`. MATLAB will then call this script to figure out the structure of the functions inputs and outputs. If successful, your screen will look like this the following. Then click next.
@@ -177,3 +178,129 @@ We will use [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)
 6. Click on `More Settings` and navigate to the `Hardware` tab. Enter the IP address and credentials for your Raspberry Pi. Note that in order to compile the shared object, your PC and Pi must both be on the same network. Click `Close` and then click `Generate`.
 ![Screenshot of MATLAB Coder](./assets/coder_step6.png)
 7. You should get a message that code generation was successful. You can now copy the generated library `FSMController.so` to wherever you want to use it. You'll find it in the specified `Build Directory` (configured right below the login credentials) on the Pi. 
+
+### Checking the Resulting `C` Code
+MATLAB Coder makes fairly readable `C` code. We can examine the generated code to confirm that it will work with the `opensourceleg` library's `CompiledControl` module. Inside the generated file `FSMController.h`, we see that the `FSMController` function has the appropriate interface:
+```c
+/* Function Declarations */
+extern void FSMController(const FSM_Inputs *inputs, FSM_Outputs *outputs);
+```
+Likewise, we see in `FSMController_types.h` that our structures were also appropriately defined, paralleling our class definition: 
+```c
+/*
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ * File: FSMController_types.h
+ *
+ * MATLAB Coder version            : 5.6
+ * C/C++ source code generated on  : 25-Oct-2023 16:52:20
+ */
+
+#ifndef FSMCONTROLLER_TYPES_H
+#define FSMCONTROLLER_TYPES_H
+
+/* Include Files */
+#include "rtwtypes.h"
+
+/* Type Definitions */
+#ifndef enum_eStates
+#define enum_eStates
+enum eStates
+{
+  eStance = 1, /* Default value */
+  lStance,
+  eSwing,
+  lSwing
+};
+#endif /* enum_eStates */
+#ifndef typedef_eStates
+#define typedef_eStates
+typedef enum eStates eStates;
+#endif /* typedef_eStates */
+
+#ifndef typedef_ImpedanceParameters
+#define typedef_ImpedanceParameters
+typedef struct {
+  double stiffness;
+  double damping;
+  double eqAngle;
+} ImpedanceParameters;
+#endif /* typedef_ImpedanceParameters */
+
+#ifndef typedef_JointImpedanceSet
+#define typedef_JointImpedanceSet
+typedef struct {
+  ImpedanceParameters earlyStance;
+  ImpedanceParameters lateStance;
+  ImpedanceParameters earlySwing;
+  ImpedanceParameters lateSwing;
+} JointImpedanceSet;
+#endif /* typedef_JointImpedanceSet */
+
+#ifndef typedef_TransitionParameters
+#define typedef_TransitionParameters
+typedef struct {
+  double minTimeInState;
+  double loadLStance;
+  double ankleThetaEStanceToLStance;
+  double kneeThetaESwingToLSwing;
+  double kneeDThetaESwingToLSwing;
+  double loadESwing;
+  double loadEStance;
+  double kneeThetaLSwingToEStance;
+} TransitionParameters;
+#endif /* typedef_TransitionParameters */
+
+#ifndef typedef_FSMParameters
+#define typedef_FSMParameters
+typedef struct {
+  double bodyWeight;
+  JointImpedanceSet kneeImpedance;
+  JointImpedanceSet ankleImpedance;
+  TransitionParameters transitionParameters;
+} FSMParameters;
+#endif /* typedef_FSMParameters */
+
+#ifndef typedef_Sensors
+#define typedef_Sensors
+typedef struct {
+  double kneeAngle;
+  double ankleAngle;
+  double kneeVelocity;
+  double ankleVelocity;
+  double Fz;
+} Sensors;
+#endif /* typedef_Sensors */
+
+#ifndef typedef_FSM_Inputs
+#define typedef_FSM_Inputs
+typedef struct {
+  FSMParameters parameters;
+  Sensors sensors;
+  double time;
+} FSM_Inputs;
+#endif /* typedef_FSM_Inputs */
+
+#ifndef typedef_FSM_Outputs
+#define typedef_FSM_Outputs
+typedef struct {
+  eStates currentState;
+  double timeInCurrentState;
+  ImpedanceParameters kneeImpedance;
+  ImpedanceParameters ankleImpedance;
+} FSM_Outputs;
+#endif /* typedef_FSM_Outputs */
+
+#endif
+/*
+ * File trailer for FSMController_types.h
+ *
+ * [EOF]
+ */
+```
+
+## Next Steps
+You've now successfully generated the shared object library for the MATLAB implementation of the Finite State Machine Walking Controller. This compiled library is now ready to use with the `opensourceleg`. 
+Head over to the `opensourceleg` repository to find the [example code](https://github.com/neurobionics/opensourceleg/blob/main/examples/fsm_walking_compiled_controller.py) that can use this compiled library.
+For help using the library once you've made it, see the [`opensourceleg` library documentation](https://opensourceleg.readthedocs.io/en/latest/examples/compiled_control.html).
