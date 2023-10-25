@@ -1,4 +1,4 @@
-classdef eStates < uint8
+classdef eStates < int32
     enumeration
         eStance (1)
         lStance (2)

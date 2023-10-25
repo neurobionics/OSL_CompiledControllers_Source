@@ -8,18 +8,18 @@
  * OSL. The FSM has four states: ESTANCE, LSTANCE, ESWING, and LSWING. FINISH!
  * 
 */
-FSM_Outputs FSMController(FSM_Inputs inputs) {
+extern "C" void FSMController(FSM_Inputs *inputs, FSM_Outputs *outputs) {
 
     // If this is the first function call, initialize the current state to ESTANCE
-    Sensors sensors = inputs.sensors;
-    FSMParameters params = inputs.parameters;
+    Sensors sensors = inputs->sensors;
+    FSMParameters params = inputs->parameters;
     
     static State currentState = ESTANCE;
     static double currentTimeInState = 0.0;
     static double time_last;
 
-    double dt = inputs.time - time_last;
-    time_last = inputs.time;
+    double dt = inputs->time - time_last;
+    time_last = inputs->time;
 
     // When in ESTANCE
     if (currentState == ESTANCE) {
@@ -117,13 +117,8 @@ FSM_Outputs FSMController(FSM_Inputs inputs) {
 
 
     // Set outputs
-    FSM_Outputs outputs;
-
-    outputs.currentState = currentState;
-    outputs.timeInCurrentState = currentTimeInState;
-    outputs.kneeImpedance = kneeImpedance;
-    outputs.ankleImpedance = ankleImpedance;
-
-    return outputs;
-
+    outputs->currentState = currentState;
+    outputs->timeInCurrentState = currentTimeInState;
+    outputs->kneeImpedance = kneeImpedance;
+    outputs->ankleImpedance = ankleImpedance;
 }
