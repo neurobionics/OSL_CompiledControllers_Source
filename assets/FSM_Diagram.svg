@@ -59,118 +59,113 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <g
-       id="g4288"
-       transform="translate(-0.80789682,-0.2556119)">
-      <rect
-         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-         id="rect184"
-         width="32.411587"
-         height="22.187111"
-         x="8.9975376"
-         y="5.112237"
-         ry="2.6583636" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="81.462074"
-         y="18.199566"
-         id="text3289"><tspan
-           x="15.344087"
-           y="12.891735"
-           id="tspan5184"><tspan
+    <rect
+       style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect184"
+       width="32.411587"
+       height="22.187111"
+       x="8.189641"
+       y="4.8566251"
+       ry="2.6583636" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="24.47076"
+       y="13.251297"
+       id="text3289"><tspan
+         sodipodi:role="line"
+         id="tspan6331"
+         x="24.47076"
+         y="13.251297"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle;stroke-width:0.264583">Early</tspan><tspan
+         sodipodi:role="line"
+         id="tspan6333"
+         x="24.47076"
+         y="23.890642"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle;stroke-width:0.264583">Stance</tspan></text>
+    <rect
+       style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect184-2"
+       width="32.411587"
+       height="22.187111"
+       x="63.043949"
+       y="4.8566251"
+       ry="2.6583636" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="79.249176"
+       y="12.637829"
+       id="text3289-9"><tspan
+         sodipodi:role="line"
+         id="tspan6372"
+         x="79.249176"
+         y="12.637829"><tspan
+           style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+           id="tspan3381">Late</tspan></tspan><tspan
+         sodipodi:role="line"
+         id="tspan6374"
+         x="79.249176"
+         y="23.277174"><tspan
+           style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+           id="tspan6376">Stance</tspan></tspan></text>
+    <rect
+       style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect184-2-0"
+       width="32.411587"
+       height="22.187111"
+       x="63.043949"
+       y="44.544594"
+       ry="2.6583636" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="79.249176"
+       y="52.325329"
+       id="text3289-9-8"><tspan
+         sodipodi:role="line"
+         id="tspan6381"
+         x="79.249176"
+         y="52.325329"><tspan
+           id="tspan3473"
+           style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle">Early</tspan></tspan><tspan
+         sodipodi:role="line"
+         id="tspan6383"
+         x="79.249176"
+         y="62.964672"><tspan
+           style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
+           id="tspan6385">Stance</tspan></tspan></text>
+    <rect
+       style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect184-2-3"
+       width="32.411587"
+       height="22.187111"
+       x="8.189641"
+       y="44.544594"
+       ry="2.6583636" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="24.395508"
+       y="52.325329"
+       id="text3289-9-9"><tspan
+         sodipodi:role="line"
+         id="tspan6359"
+         x="24.395508"
+         y="52.325329"><tspan
+           id="tspan3514"><tspan
              style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5182">Early </tspan></tspan><tspan
-           x="12.220289"
-           y="23.531079"
-           id="tspan5188"><tspan
+             id="tspan3512">Late</tspan></tspan></tspan><tspan
+         sodipodi:role="line"
+         id="tspan6361"
+         x="24.395508"
+         y="62.964672"><tspan
+           id="tspan6363"><tspan
              style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5186">Stance</tspan></tspan></text>
-    </g>
-    <g
-       id="g4296"
-       transform="translate(1.1347537)">
-      <rect
-         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-         id="rect184-2"
-         width="32.411587"
-         height="22.187111"
-         x="61.909195"
-         y="4.8566251"
-         ry="2.6583636" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="81.462074"
-         y="18.199566"
-         id="text3289-9"><tspan
-           x="69.784162"
-           y="12.637829"
-           id="tspan5192"><tspan
+             id="tspan6367">Swing</tspan></tspan><tspan
+           id="tspan3518"><tspan
              style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5190">Late </tspan></tspan><tspan
-           x="65.131682"
-           y="23.277173"
-           id="tspan5196"><tspan
-             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5194">Stance</tspan></tspan></text>
-    </g>
-    <g
-       id="g4283"
-       transform="translate(53.484065,8.6055688)">
-      <rect
-         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-         id="rect184-2-0"
-         width="32.411587"
-         height="22.187111"
-         x="9.5598831"
-         y="35.939026"
-         ry="2.6583636" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2-0);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="81.462074"
-         y="18.199566"
-         id="text3289-9-8"><tspan
-           x="15.905757"
-           y="43.71986"
-           id="tspan5200"><tspan
-             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5198">Early </tspan></tspan><tspan
-           x="12.782432"
-           y="54.359203"
-           id="tspan5204"><tspan
-             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5202">Stance</tspan></tspan></text>
-    </g>
-    <g
-       id="g4275"
-       transform="translate(-52.492614,7.8898553)">
-      <rect
-         style="fill:#ffd42a;stroke:#ffd42a;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-         id="rect184-2-3"
-         width="32.411587"
-         height="22.187111"
-         x="60.682255"
-         y="36.654739"
-         ry="2.6583636" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:8.46667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect184-2-3);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="81.462074"
-         y="18.199566"
-         id="text3289-9-9"><tspan
-           x="68.557451"
-           y="44.434704"
-           id="tspan5208"><tspan
-             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5206">Late </tspan></tspan><tspan
-           x="65.2977"
-           y="55.074047"
-           id="tspan5212"><tspan
-             style="font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:center;text-anchor:middle"
-             id="tspan5210">Swing</tspan></tspan></text>
-    </g>
+             id="tspan3516" /></tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
        d="m 40.795654,15.438957 18.09732,0"
