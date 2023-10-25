@@ -9,8 +9,8 @@ The state machine has four states, two for stance and two for swing. Constant im
 ![Schematic of the Finite State Machine Logic](/assets/FSM_Diagram.svg)
 
 Please reference the readmes for each implementation for more information and compilation instructions:
-- [C++](/Finite%20State%20Machine%20Walking%20Controller/CPP/readme.md)
-- [MATLAB](/Finite%20State%20Machine%20Walking%20Controller/Matlab/readme.md)
+- [C++](/Finite%20State%20Machine%20Walking%20Controller/CPP/)
+- [MATLAB](/Finite%20State%20Machine%20Walking%20Controller/Matlab/)
 
 ### Future
 Other example controllers may be added to this repository in the future. Check back often!

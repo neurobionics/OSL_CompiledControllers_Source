@@ -3,8 +3,8 @@ This section of the repository contains the source code for the MATLAB implement
 
 ## Prerequisites
 - MATLAB (any somewhat recent version will do)
-- [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)[^1]
-- [MATLAB Raspberry Pi Hardware Support Package](https://www.mathworks.com/hardware-support/raspberry-pi-matlab.html)[^1]
+- [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)
+- [MATLAB Raspberry Pi Hardware Support Package](https://www.mathworks.com/hardware-support/raspberry-pi-matlab.html)
 
 > **_NOTE_**: MATLAB Coder and the Hardware Support Package can be installed using the `Add-On Explorer` in MATLAB.
 
