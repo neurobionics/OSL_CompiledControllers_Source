@@ -1,4 +1,5 @@
+#include "FSMStructs.hpp"
 
-// FSMController function prototype
-
-FSM_Outputs FSMController(FSM_Inputs);
+extern "C" void FSMController(FSM_Inputs *inputs, FSM_Outputs *outputs);
+extern "C" void FSMController_initialize(void);
+extern "C" void FSMController_terminate(void);

@@ -1,7 +1,4 @@
-#include "FSMStructs.hpp"
 #include "FSMController.hpp"
-
-
 
 /**
  * This function implements a finite state machine (FSM) controller for the
@@ -122,3 +119,7 @@ extern "C" void FSMController(FSM_Inputs *inputs, FSM_Outputs *outputs) {
     outputs->kneeImpedance = kneeImpedance;
     outputs->ankleImpedance = ankleImpedance;
 }
+
+// Placeholder init and terminate functions
+extern "C" void FSMController_initialize(void){};
+extern "C" void FSMController_terminate(void){};
