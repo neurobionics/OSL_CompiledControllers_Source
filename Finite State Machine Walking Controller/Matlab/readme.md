@@ -21,7 +21,7 @@ Likewise, we create a `TransitionParameters` class to hold all of the state mach
 
 https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/main/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/TransitionParameters.m#L1
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/main/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/Sensors.m#L1
+https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/eb5e9d8503c824d5ebe9170c34fe1d6215663e30/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/Sensors.m#L1
 
 
 ## Code Generation and Compilation
