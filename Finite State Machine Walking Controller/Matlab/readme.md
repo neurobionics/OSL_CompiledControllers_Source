@@ -32,7 +32,7 @@ https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/eb5e9d8503c8
 
 Finally, we define our `FSM_Inputs` type using the types we just defined. 
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/97973ee80d8a63ef02bea106b8a8064f2c2b013e/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/FSM_Inputs.m#L1-14
+https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/97973ee80d8a63ef02bea106b8a8064f2c2b013e/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/FSM_Inputs.m#L1-L14
 
 So far, all the types that we have defined have been `doubles`. Next we're going to define an enumeration for the active state name called `eStates`. 
 
