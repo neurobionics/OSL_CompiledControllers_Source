@@ -73,11 +73,12 @@ classdef TransitionParameters
 end
 ```
 
-```
+
 <details>
 <summary>
     Sensors.m
     </summary>
+```
 classdef Sensors
     properties
         kneeAngle
