@@ -14,7 +14,22 @@ The source files consist of a main function `FSMController.m`, a setup script `F
 ### Type Definitions
 To define input and output types similar to how one would define them in `C` or `C++`, we utilize MATLAB classes. To define a new class, make a new file containing the class name, a properties block, and a single constructor method. For example, we define the `ImpedanceParameters` class as
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/ccc86b909c5e101d1e802491e03dbcf2ebcf83e4/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/ImpedanceParameters.m#L1-L14
+```
+classdef ImpedanceParameters
+    properties
+        stiffness
+        damping
+        eqAngle
+    end
+    methods
+        function obj = ImpedanceParameters()
+            obj.stiffness = 0;
+            obj.damping = 0;
+            obj.eqAngle = 0; 
+        end
+    end           
+end
+```
 
 In the properties block of this file, we define that the `ImpedanceParameters` structure has three fields, `stiffness`, `damping`, and `eqAngle`. Next in the `methods` block, we create a constructor that initializes each field to a value. Since we don't specify a data type, MATLAB assumes that they are `doubles`. 
 
@@ -22,13 +37,67 @@ In the properties block of this file, we define that the `ImpedanceParameters` s
 
 We then make another class called `JointImpedanceSet` that contains four `ImpedanceParameter` objects, one for each state in the state machine.
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/97973ee80d8a63ef02bea106b8a8064f2c2b013e/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/JointImpedanceSet.m#L1-L16
+```
+classdef JointImpedanceSet
+    properties
+        earlyStance ImpedanceParameters
+        lateStance ImpedanceParameters
+        earlySwing ImpedanceParameters
+        lateSwing ImpedanceParameters
+    end
+    methods
+        function obj = JointImpedanceSet()
+            obj.earlyStance = ImpedanceParameters();
+            obj.lateStance = ImpedanceParameters();
+            obj.earlySwing = ImpedanceParameters();
+            obj.lateSwing = ImpedanceParameters();
+        end
+    end
+end
+```
 
 Likewise, we create a `TransitionParameters` class to hold all of the state machine's transition parameters and a `Sensors` class to hold the sensor data. 
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/ccc86b909c5e101d1e802491e03dbcf2ebcf83e4/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/TransitionParameters.m#L1-L12
+```
+classdef TransitionParameters
+    properties
+        minTimeInState = 0.0;
+        loadLStance (1,1) double = 0;
+        ankleThetaEStanceToLStance (1,1) double = 0;
+        kneeThetaESwingToLSwing (1,1) double = 0;
+        kneeDThetaESwingToLSwing (1,1) double = 0;
+        loadESwing (1,1) double = 0;
+        loadEStance (1,1) double = 0;
+        kneeThetaLSwingToEStance (1,1) = 0;
+    end
+end
+```
 
-https://github.com/neurobionics/OSL_CompiledControllers_Source/blob/eb5e9d8503c824d5ebe9170c34fe1d6215663e30/Finite%20State%20Machine%20Walking%20Controller/Matlab/Type%20Definitions/Sensors.m#L1-L18
+```
+<details>
+<summary>
+    Sensors.m
+    </summary>
+classdef Sensors
+    properties
+        kneeAngle
+        ankleAngle
+        kneeVelocity
+        ankleVelocity
+        Fz
+    end
+    methods 
+        function obj = Sensors()
+            obj.kneeAngle = 0.0;
+            obj.ankleAngle = 0.0;
+            obj.kneeVelocity = 0.0;
+            obj.ankleVelocity = 0.0; 
+            obj.Fz = 0.0; 
+        end
+    end
+end
+```
+</details>
 
 Finally, we define our `FSM_Inputs` type using the types we just defined. 
 
