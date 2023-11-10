@@ -7,7 +7,7 @@ SOURCES = $(shell echo *.cpp)
 HEADERS = $(shell echo *.h)
 OBJECTS=$(SOURCES:.cpp=.o)
 
-TARGET=./FSM_WalkingController.so
+TARGET=./FSMController.so
 
 all: $(TARGET)
 
