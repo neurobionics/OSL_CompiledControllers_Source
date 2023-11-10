@@ -9,8 +9,8 @@ classdef FSM_Outputs
         function obj = FSM_Outputs
             obj.currentState = eStates.eStance;
             obj.timeInCurrentState = 0.0;
-            obj.ankleImpedance = ImpedanceParameters();
             obj.kneeImpedance = ImpedanceParameters(); 
+            obj.ankleImpedance = ImpedanceParameters();
         end
     end
 end
