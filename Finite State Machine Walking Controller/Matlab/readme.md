@@ -15,8 +15,7 @@ The source files consist of a main function `FSMController.m`, a setup script `F
 To define input and output types similar to how one would define them in `C` or `C++`, we utilize MATLAB classes. To define a new class, make a new file containing the class name, a properties block, and a single constructor method. For example, we define the `ImpedanceParameters` class in `ImpedanceParameters.m`.
 <details>
 <summary>
-
-`ImpedanceParameters.m`
+    ImpedanceParameters.m
     </summary>
 
 ```matlab
@@ -45,8 +44,7 @@ In the properties block of this file, we define that the `ImpedanceParameters` s
 We then make another class called `JointImpedanceSet` that contains four `ImpedanceParameter` objects, one for each state in the state machine.
 <details>
 <summary>
-
-`JointImpedanceSet.m`
+JointImpedanceSet.m
     </summary>
 
 ```matlab
@@ -73,8 +71,7 @@ end
 Likewise, we create a `TransitionParameters` class to hold all of the state machine's transition parameters and a `Sensors` class to hold the sensor data. 
 <details>
 <summary>
-
-`TransitionParameters.m`
+TransitionParameters.m
     </summary>
 
 ```matlab
@@ -127,8 +124,7 @@ Finally, we define our `FSM_Inputs` type using the types we just defined.
 
 <details>
 <summary>
-
-`FSM_Inputs.m`
+FSM_Inputs.m
     </summary>
 
 ```matlab
@@ -154,8 +150,7 @@ So far, all the types that we have defined have been `doubles`. Next we're going
 
 <details>
 <summary>
-
-`eStates.m`
+eStates.m
     </summary>
 
 ```matlab
@@ -179,8 +174,7 @@ Finally, we define the output type `FSM_Outputs` to contain the active impedance
 
 <details>
 <summary>
-
-`FSM_Outputs.m`
+FSM_Outputs.m
     </summary>
 
 ```matlab
@@ -334,8 +328,7 @@ outputs.ankleImpedance = ankleImpedance;
 The purpose of the setup script is to configure the MATLAB path and to make a test call to the main function. In this case, our setup file is quite simple. We reset the workspace, add the `Type Defintions` directory to the path, and call the main function once. 
 <details>
 <summary>
-
-`FSMController_setup.m``
+FSMController_setup.m
 </summary>
 
 ```matlab
@@ -376,8 +369,7 @@ extern void FSMController(const FSM_Inputs *inputs, FSM_Outputs *outputs);
 Likewise, we see in `FSMController_types.h` that our structures were also appropriately defined, paralleling our class definition: 
 <details>
 <summary>
-
-`FSMController_types.h`
+FSMController_types.h
 </summary>
 
 ```c
