@@ -75,8 +75,8 @@ struct FSM_Outputs {
 
   State currentState;
   double timeInCurrentState;
-  ImpedanceParameters ankleImpedance;
   ImpedanceParameters kneeImpedance;
+  ImpedanceParameters ankleImpedance;
 
 };
 
