@@ -12,16 +12,18 @@ function [outputs] = FSMController(inputs)
 % Outputs: current state, time in current state, knee impedance parameters, ankle impedance parameters
 %
 % 
-
-% TODO: Jace to add his contact info here and attribution info
+%
+% Jace Derosia, Kevin Best
+% October, 2023
 
 % Unpack things for convenience 
 sensors = inputs.sensors;
 params = inputs.parameters;
 
-persistent currentState currentTimeInState time_last
+persistent currentState previousState currentTimeInState time_last
 if isempty(currentState)
     currentState = eStates.eStance;
+    previousState = currentState;
     currentTimeInState = 0;
     time_last = inputs.time;
 end
@@ -37,20 +39,16 @@ if currentState == eStates.eStance
             params.transitionParameters.ankleThetaEStanceToLStance ...
             && currentTimeInState > params.transitionParameters.minTimeInState)
         currentState = eStates.lStance;
-        currentTimeInState = 0.0;
     else
         currentState = eStates.eStance;
-        currentTimeInState = currentTimeInState + dt;
     end
 
 elseif currentState == eStates.lStance
     if(sensors.Fz > params.transitionParameters.loadESwing && ...
             currentTimeInState > params.transitionParameters.minTimeInState)
         currentState = eStates.eSwing;
-        currentTimeInState = 0.0;
     else
         currentState = eStates.lStance;
-        currentTimeInState = currentTimeInState + dt;
     end
 
 elseif currentState == eStates.eSwing
@@ -59,30 +57,21 @@ elseif currentState == eStates.eSwing
             && currentTimeInState > params.transitionParameters.minTimeInState)
 
         currentState = eStates.lSwing;
-        currentTimeInState = 0.0;
-
     else
         currentState = eStates.eSwing;
-        currentTimeInState = currentTimeInState + dt;
-
     end
 
 elseif currentState == eStates.lSwing
-
     if ((sensors.Fz < params.transitionParameters.loadEStance ...
             || sensors.kneeAngle < params.transitionParameters.kneeThetaLSwingToEStance) ...
             && currentTimeInState > params.transitionParameters.minTimeInState)
         currentState = eStates.eStance;
-        currentTimeInState = 0.0;
     else
         currentState = eStates.lSwing;
-        currentTimeInState = currentTimeInState + dt;
-
     end
 
 else
     currentState = eStates.eStance;
-    currentTimeInState = currentTimeInState + dt;
 end
 
 % Select impedance parameters based on the current state
@@ -103,6 +92,16 @@ switch currentState
         kneeImpedance = params.kneeImpedance.earlyStance;
         ankleImpedance = params.ankleImpedance.earlyStance;
 end
+
+% Track time in state
+if currentState == previousState
+    currentTimeInState = currentTimeInState + dt;
+else
+    currentTimeInState = 0;
+end
+
+% Update previous state
+previousState = currentState; 
 
 % Write to output structures
 
