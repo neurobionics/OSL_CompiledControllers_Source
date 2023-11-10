@@ -35,3 +35,4 @@
 *.bak
 codegen/
 *.prj
+*.asv
